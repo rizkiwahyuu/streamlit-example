@@ -64,7 +64,7 @@ st.pyplot(fig)
 
 # Weather Impact
 st.header('Weather Impact on Bike Rentals')
-weather_conditions = data.groupby('weathersit').agg({'cnt': 'mean'}).reset_index()
+weather_conditions = hour_data.groupby('weathersit').agg({'cnt': 'mean'}).reset_index()
 weather_conditions['weathersit'] = weather_conditions['weathersit'].map({
     1: 'Clear, Few clouds',
     2: 'Mist, Cloudy',
