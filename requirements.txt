@@ -1,6 +1,4 @@
 altair
 pandas
-streamlit
-pandas
 matplotlib.pyplot
 seaborn
