@@ -16,9 +16,6 @@ day_data.dropna(inplace=True)
 st.sidebar.title('Bike Sharing Data Analysis')
 
 # Descriptive Statistics
-st.write(day_data[['temp', 'hum', 'windspeed', 'cnt']].describe())
-st.subheader('Hourly Data')
-st.write(hour_data[['temp', 'hum', 'windspeed', 'cnt']].describe())
 
 # Distribution Plots
 fig, axes = plt.subplots(2, 2, figsize=(12, 8))
