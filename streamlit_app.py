@@ -15,23 +15,12 @@ day_data.dropna(inplace=True)
 # Sidebar
 st.sidebar.title('Bike Sharing Data Analysis')
 
-# Data Overview
-st.header('Data Overview')
-st.subheader('Hourly Data')
-st.write(hour_data.head())
-st.subheader('Daily Data')
-st.write(day_data.head())
-
 # Descriptive Statistics
-st.header('Descriptive Statistics')
-st.subheader('Daily Data')
 st.write(day_data[['temp', 'hum', 'windspeed', 'cnt']].describe())
 st.subheader('Hourly Data')
 st.write(hour_data[['temp', 'hum', 'windspeed', 'cnt']].describe())
 
 # Distribution Plots
-st.header('Distribution Plots')
-st.subheader('Daily Data')
 fig, axes = plt.subplots(2, 2, figsize=(12, 8))
 sns.histplot(day_data['temp'], bins=20, kde=True, ax=axes[0, 0])
 axes[0, 0].set_title('Temperature Distribution')
@@ -48,7 +37,6 @@ axes[1, 1].set_title('Bike Rental Count Boxplot')
 st.pyplot(fig)
 
 # Line Plot
-st.header('Hourly Bike Rental Patterns')
 hour_data['day_type'] = 'Working Day'
 hour_data.loc[hour_data['holiday'] == 1, 'day_type'] = 'Holiday'
 hourly_average = hour_data.groupby(['day_type', 'hr'])['cnt'].mean().unstack()
@@ -62,8 +50,6 @@ ax.legend(title='Day')
 
 st.pyplot(fig)
 
-# Weather Impact
-st.header('Weather Impact on Bike Rentals')
 weather_conditions = hour_data.groupby('weathersit').agg({'cnt': 'mean'}).reset_index()
 weather_conditions['weathersit'] = weather_conditions['weathersit'].map({
     1: 'Clear, Few clouds',
